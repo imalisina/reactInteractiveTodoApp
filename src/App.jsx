@@ -1,15 +1,26 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-// add created components
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
+// add created pages
+import Home from './pages/Home';
+import Todo from './pages/Todo';
+
+// add navbar layout
+import Navbar from './components/layouts/Navbar';
 
 const App = () => {
   return (
-    <div>
+    <>
+
+      <BrowserRouter>
       <Navbar />
-      <Hero />
-    </div>
+        <Routes>
+          <Route index Component={Home} />
+          <Route path='/todo' Component={Todo} />
+          {/* <Route path='*' Component={} /> */}
+        </Routes>
+      </BrowserRouter>
+    </>
   )
 }
 
