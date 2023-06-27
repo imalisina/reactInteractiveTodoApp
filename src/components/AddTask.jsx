@@ -1,14 +1,14 @@
 import React from 'react';
 
-const AddTask = ({ setTasks }) => {
+const AddTask = ({ setNewTask }) => {
        // add new task handler
        const newTaskHandler = () => {
               // select the input element
               const input = document.querySelector('input[name="new_task"]');
               // extract entered new task
-              const task = input.value;
+              const newTask = input.value;
               // add the task into state
-              setTasks(task);
+              setNewTask((prevTasks) => [...prevTasks, newTask]);
               // reset the input value
               input.value = "";
        }
