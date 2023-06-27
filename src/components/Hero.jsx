@@ -1,11 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// add smooth scroll feature
+import { handleSmoothScroll } from './functions/smoothScroll';
+
+// add framer motion
+import { motion } from 'framer-motion';
 
 const Hero = () => {
        return (
               <>
                      <div class="bg-white dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
-                            <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+                            {/* additional space */}
+                            <div className='h-14'></div>
+                            <motion.div
+                                   initial={{ opacity: 0, y: 10 }}
+                                   animate={{ opacity: 1, y: 20 }}
+                                   transition={{ duration: 0.4, type: 'tween' }} class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
                                    <Link to={"/todo"} class="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-sky-700 bg-sky-100 rounded-full dark:bg-sky-900 dark:text-sky-300 hover:bg-sky-200 dark:hover:bg-sky-800">
                                           <span class="text-xs bg-sky-600 rounded-full text-white px-4 py-1.5 mr-3">New</span>
                                           <span class="text-sm font-medium">Demo is available! Explore Now.</span>
@@ -22,10 +32,12 @@ const Hero = () => {
                                           Getting started
                                    </Link>
                                    {/* Scroll to other features */}
-                                   <a class="ml-5 font-small text-md text-sky-600 dark:text-sky-500 hover:underline cursor-pointer">
+                                   <a onClick={() => handleSmoothScroll(".pricing-section")} class="ml-5 font-small text-md text-sky-600 dark:text-sky-500 hover:underline cursor-pointer">
                                           Learn more
                                    </a>
-                            </div>
+                            </motion.div>
+                            {/* additional space for smooth scroll */}
+                            <div className='h-60'></div>
                      </div>
               </>
        )
